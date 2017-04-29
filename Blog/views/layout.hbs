@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SoftUni Blog</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/morestyle.css' />
+    <script src="/javascripts/jquery-1.10.2.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <script src="/javascripts/myfunctions.js"></script>
+
+</head>
+<body>
+<button onclick="topFunction()" id="myBtn" title="Go to top">&#10094;</button>
+    <header>
+        <div class="jumbotron" style="margin-bottom:0; margin-top: 0 ">
+            <div class="jumbotronDiv">
+            <h1>SoftUni</h1>
+            </div>
+        </div>
+        <div class="navbar navbar-default text-uppercase" style="margin-top: 0">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand">Home</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                {{#if user}}
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/user/details">{{user.email}}</a></li>
+                            <li><a href="/article/create">New Article</a></li>
+                            <li><a href="/user/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                {{/if}}
+                {{#unless user}}
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/user/register">Register</a></li>
+                            <li><a href="/user/login">Login</a></li>
+                        </ul>
+                    </div>
+                {{/unless}}
+            </div>
+        </div>
+    </header>
+    {{#if error }}
+        <h2>{{error}}</h2>
+    {{/if}}
+    {{{body}}}
+    <footer>
+        <div class="container modal-footer">
+            <p>&copy; 2017 - Software University Foundation</p>
+            <form class="form-inline">
+                <div class="input-group">
+                    <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-danger">Subscribe</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </footer>
+</body>
+
+</html>
